@@ -16,10 +16,10 @@ const Navbar = () => {
       <div className={styles.logo}>The Cyber Blog</div>
       <div className={styles.links}>
         <ThemeToggle/>
-        <Link href="/"> Home </Link>
-        <Link href="/"> Check URL </Link>
-        <Link href="/"> Contact </Link>
-        <Link href="/"> About </Link>
+        <Link href="/" className={styles.link}> Home </Link>
+        <Link href="/" className={styles.link}> Check URL </Link>
+        <Link href="/" className={styles.link}> Contact </Link>
+        <Link href="/" className={styles.link}> About </Link>
         <AulthLink/>
       </div>
       
