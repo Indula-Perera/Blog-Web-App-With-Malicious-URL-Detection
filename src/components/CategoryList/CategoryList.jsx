@@ -51,20 +51,6 @@ const CategoryList = () => {
 
         <Link
           href="/blog?cat=style"
-          className={`${styles.category} ${styles.Dark}`}
-        >
-          <Image
-            src="/dark.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          Dark Web
-        </Link>
-
-        <Link
-          href="/blog?cat=style"
           className={`${styles.category} ${styles.Code}`}
         >
           <Image
@@ -75,6 +61,20 @@ const CategoryList = () => {
             className={styles.image}
           />
           Code
+        </Link>
+
+        <Link
+          href="/blog?cat=style"
+          className={`${styles.category} ${styles.Dark}`}
+        >
+          <Image
+            src="/dark.jpg"
+            alt=""
+            width={32}
+            height={32}
+            className={styles.image}
+          />
+          Dark Web
         </Link>
 
         <Link

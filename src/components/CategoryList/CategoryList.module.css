@@ -17,4 +17,55 @@
     display: flex;
     align-items: center;
     gap: 10px   ;
+    text-transform: capitalize;
+    width: 15%;
+    height: 80px;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.category.Cyber{
+    background-color: #48b6f131;
+}
+.category.Ai{
+    background-color: #da7ec631;
+}
+.category.Chat{
+    background-color: #7cb97e33;
+}
+.category.Dark{
+    background-color: #594aff31;
+}
+.category.Code{
+    background-color: #faae5245;
+}
+.category.Virus{
+    background-color: #ee66443b;
+}
+.image{
+    border-radius: 50% ;
+}
+
+@media screen and (max-width: 1280px) {
+    .category{
+       width: 20%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .category{
+       width: 25%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .category{
+       width: 45%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .category{
+       width: 100%;
+    }
 }

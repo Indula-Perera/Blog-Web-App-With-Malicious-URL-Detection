@@ -54,3 +54,29 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 1280px) {
+    .title{
+        font-size: 70px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .title{
+        font-size: 60px;
+    }
+    .imgContainer{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title{
+        font-size: 48px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .title{
+        font-size: 36px;
+    }
+}
