@@ -5,8 +5,10 @@ import Pagination from '../pagination/Pagination'
 const CardList = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>Recent Posts</div>
+      <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.post}>
+        <Card/>
+        <Card/>
         <Card/>
 
       </div>
