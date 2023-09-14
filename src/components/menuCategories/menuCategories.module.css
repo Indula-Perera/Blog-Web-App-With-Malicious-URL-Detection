@@ -1,0 +1,34 @@
+.categoryList{
+    margin-top:  35PX;
+    margin-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+} 
+
+.categoryItem{
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 40%;
+    text-align: center;
+}
+
+.categoryItem.Cyber{
+    background-color: #48b6f131;
+}
+.categoryItem.Ai{
+    background-color: #da7ec631;
+}
+.categoryItem.Chat{
+    background-color: #7cb97e33;
+}
+.categoryItem.Dark{
+    background-color: #594aff31;
+}
+.categoryItem.Code{
+    background-color: #faae5245;
+}
+.categoryItem.Virus{
+    background-color: #ee66443b;
+}
