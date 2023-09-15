@@ -2,7 +2,7 @@
     --bg:white;
     --textColor:black;
     --softbg:#f0f0f0;
-    --softTextColor:#626262;
+    --softTextColor:#a6a6a6;
 }
 
 *{
@@ -32,7 +32,7 @@ a{
     --bg:white;
     --textColor:black;
     --softbg:#f0f0f0;
-    --softTextColor:#626262;
+    --softTextColor:#a6a6a6;
 }
 
 .container{
@@ -45,8 +45,8 @@ a{
     max-width: 1536px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 @media screen and (max-width: 1536px){
