@@ -11,7 +11,7 @@ const AulthLink = () => {
 
 
 
-  const status ="notauthenticated";
+  const status ="authenticated";
   return (
    <>
    {status === "notauthenticated" ? (

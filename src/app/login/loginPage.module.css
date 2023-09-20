@@ -17,7 +17,7 @@
 
 .socialButton{
     padding: 20px;
-    border: 5px;
+    border-radius: 5px;
     border: none;
     color: white;
     font-weight: bold;
