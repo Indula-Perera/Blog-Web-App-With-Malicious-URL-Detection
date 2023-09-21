@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Styles from "./AulthLink.module.css"
 import { useState } from "react";
+import { signOut } from "next-auth/react";
 
 const AulthLink = () => {
 
@@ -19,7 +20,7 @@ const AulthLink = () => {
    ): (
     <>
     <Link href="/Write"  className={Styles.link}>Write</Link>
-    <span className={Styles.link}>Logout</span>
+    <span className={Styles.link} onClick={signOut}>Logout</span>
     
     </>
 
