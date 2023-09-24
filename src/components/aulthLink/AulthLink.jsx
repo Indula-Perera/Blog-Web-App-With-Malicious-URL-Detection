@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Styles from "./AulthLink.module.css"
 import { useState } from "react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const AulthLink = () => {
 
@@ -12,10 +12,11 @@ const AulthLink = () => {
 
 
 
-  const {status} ="authenticated";
+  const {status} = useSession(); 
+
   return (
    <>
-   {status === "notauthenticated" ? (
+   {status === "unauthenticated" ? (
     <Link href="/login" className={Styles.link}>Login</Link>
    ): (
     <>
