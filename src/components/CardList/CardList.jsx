@@ -4,7 +4,7 @@ import Card from '../card/card'
 import Pagination from '../pagination/Pagination'
 
 const getData = async (page) =>{
-  const res = await fetch ("http://localhost:3000//api/posts?page=",{
+  const res = await fetch (`http://localhost:3000//api/posts?page=${page}`,{
     cache: "no-store",
   });
 
