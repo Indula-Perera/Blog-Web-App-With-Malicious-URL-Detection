@@ -2,96 +2,48 @@ import React from "react";
 import styles from "./CategoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
-const CategoryList = () => {
+
+const getData = async () =>{
+  const res = await fetch ("http://localhost:3000//api/categories",{
+    cache: "no-store",
+  });
+
+  if(!res.ok){
+    throw new Error("Failed");
+  }
+  return res.json();
+
+};
+
+
+
+
+
+const CategoryList = async() => {
+  const data = await getData();
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
-        <Link
+        {data?.map((item)=>(<Link
           href="/blog?cat=blog"
-          className={`${styles.category} ${styles.Cyber}`}
+          className={`${styles.category} ${styles[item.slug]}`}
+          key={item._id}
         >
-          <Image
-            src="/Cyber.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          Cyber Threat
+          {item.img && (
+            <Image
+              src={item.img}
+              alt=""
+              width={32}
+              height={32}
+              className={styles.image}
+           />
+          )}
+          {item.title}
         </Link>
+        ))}
 
-        <Link
-          href="/blog?cat=style"
-          className={`${styles.category} ${styles.Ai}`}
-        >
-          <Image
-            src="/Ai.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          AI
-        </Link>
-
-        <Link
-          href="/blog?cat=style"
-          className={`${styles.category} ${styles.Chat}`}
-        >
-          <Image
-            src="/chatgpt.png"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          Chat GPT
-        </Link>
-
-        <Link
-          href="/blog?cat=style"
-          className={`${styles.category} ${styles.Code}`}
-        >
-          <Image
-            src="/code.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          Code
-        </Link>
-
-        <Link
-          href="/blog?cat=style"
-          className={`${styles.category} ${styles.Dark}`}
-        >
-          <Image
-            src="/dark.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          Dark Web
-        </Link>
-
-        <Link
-          href="/blog?cat=style"
-          className={`${styles.category} ${styles.Virus}`}
-        >
-          <Image
-            src="/Virus.jpg"
-            alt=""
-            width={32}
-            height={32}
-            className={styles.image}
-          />
-          Virus
-        </Link>
-
-
+       
       </div>
     </div>
   );
