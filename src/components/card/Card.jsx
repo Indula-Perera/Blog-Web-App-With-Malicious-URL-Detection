@@ -11,8 +11,8 @@ const card = ({key, item}) => {
 
       <div className={styles.textContainer}>
         <div className={styles.detail}>
-          <span className={styles.date}> 13.09.2023 - </span>
-          <span className={styles.category}> Cyber Threat</span>
+          <span className={styles.date}> {item.createdAt.substring(0,10)} - {""}</span>
+          <span className={styles.category}> {item.catSlug}</span>
         </div>
         <Link href="/">
           <h1>{item.title}</h1>
