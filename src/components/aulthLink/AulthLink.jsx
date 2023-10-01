@@ -17,7 +17,7 @@ const AulthLink = () => {
     <Link href="/login" className={Styles.link}>Login</Link>
    ): (
     <>
-    <Link href="/Write"  className={Styles.link}>Write</Link>
+    <Link href="/write"  className={Styles.link}>Write</Link>
     <span className={Styles.link} onClick={signOut}>Logout</span>
     
     </>
@@ -40,7 +40,7 @@ const AulthLink = () => {
     <Link href="/login">Login</Link>
    ): (
     <>
-    <Link href="/Write">Write</Link>
+    <Link href="/write">Write</Link>
     <span className={Styles.link}>Logout</span>
     
     </>
