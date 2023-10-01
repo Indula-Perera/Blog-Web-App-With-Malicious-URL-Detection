@@ -41,11 +41,13 @@ const WritePage = () => {
               onChange={(e) => setFile(e.target.files[0])}
               style={{ display: "none" }}
             />
-            <label htmlFor="image">
+           
               <button className={styles.addButton}>
+                <label htmlFor="image">
                 <Image src="/image.png" alt='' width={16} height={16} />
+                </label>
               </button>
-            </label>
+            
             <button className={styles.addButton}>
               <Image src="/external.png" alt='' width={16} height={16} />
             </button>
