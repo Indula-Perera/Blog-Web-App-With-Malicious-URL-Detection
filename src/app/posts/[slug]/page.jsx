@@ -46,11 +46,10 @@ const SinglePage = async({params}) => {
       <div className={styles.post}>
 
       
-      {typeof data?.desc === 'string' &&
           <div
             className={styles.description}
-            dangerouslySetInnerHTML={{__html: data.desc }}
-          />}
+            dangerouslySetInnerHTML={{__html: data?.desc }}
+          />
         
         <div className={styles.comment}>
           <Comments postSlug={slug}/>

@@ -58,7 +58,7 @@ const WritePage = () => {
       
     };
 
-    file && upload;
+    file && upload();
   },[file])
 
   if (status === "loading") {
@@ -67,6 +67,30 @@ const WritePage = () => {
 
   if (status === "unauthenticated") {
     router.push("/");
+  }
+
+  const slugify = (str) =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g,"")
+    .replace(/[\s-]+/g,"")
+    .replace(/^-+|-+$/g,"");
+
+  const handleSubmit = async ()=>{
+    const res = await fetch("/api/posts",{
+        method: "POST", 
+        body : JSON.stringify({
+        title, 
+        desc: value,
+        img: media,
+        slug: slugify(title),
+        catSlug:"Code"
+      }),
+      
+      });
+    
+      console.log(res)
   }
 
 
@@ -105,7 +129,7 @@ const WritePage = () => {
         <ReactQuill className={styles.textArea} theme='bubble' value={value} onChange={setValue} placeholder='Tell Your Story...' />
       </div>
 
-      <button className={styles.publish}>Publish</button>
+      <button className={styles.publish} onClick={handleSubmit}>Publish</button>
     </div>
   )
 }
