@@ -14,43 +14,51 @@ const WritePage = () => {
 
   const router = useRouter();
 
-  const [open,setOpen] = useState(false)
-  const [value,setValue] = useState("")
+  const [file, setFile] = useState(null)
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState("")
 
   if (status === "loading") {
     return <div className={styles.loading}>Loading...</div>;
   }
-  
-  if (status === "authenticated") {
+
+  if (status === "unauthenticated") {
     router.push("/");
   }
 
-  
+
   return (
     <div className={styles.container}>
-       <input type='text' placeholder='Title' className={styles.input}/>
-       <div className={styles.editor}>
-        <button className={styles.button} onClick={ () => setOpen(!open)	}>
-          <Image src="/plus.png" alt='' width={16} height={16}/>
+      <input type='text' placeholder='Title' className={styles.input} />
+      <div className={styles.editor}>
+        <button className={styles.button} onClick={() => setOpen(!open)}>
+          <Image src="/plus.png" alt='' width={16} height={16} />
         </button>
-        {open &&(
+        {open && (
           <div className={styles.add}>
-             <button className={styles.addButton}>
-          <Image src="/image.png" alt='' width={16} height={16}/>
-        </button> 
-        <button className={styles.addButton}>
-          <Image src="/external.png" alt='' width={16} height={16}/>
-        </button> 
-        <button className={styles.addButton}>
-          <Image src="/video.png" alt='' width={16} height={16}/>
-        </button>
+            <input type="file"
+              id="image"
+              onChange={(e) => setFile(e.target.files[0])}
+              style={{ display: "none" }}
+            />
+            <label htmlFor="image">
+              <button className={styles.addButton}>
+                <Image src="/image.png" alt='' width={16} height={16} />
+              </button>
+            </label>
+            <button className={styles.addButton}>
+              <Image src="/external.png" alt='' width={16} height={16} />
+            </button>
+            <button className={styles.addButton}>
+              <Image src="/video.png" alt='' width={16} height={16} />
+            </button>
           </div>
         )}
 
         <ReactQuill className={styles.textArea} theme='bubble' value={value} onChange={setValue} placeholder='Tell Your Story...' />
-       </div>
+      </div>
 
-       <button className={styles.publish}>Publish</button>
+      <button className={styles.publish}>Publish</button>
     </div>
   )
 }
