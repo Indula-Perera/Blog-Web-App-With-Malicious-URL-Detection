@@ -29,6 +29,6 @@ const card = ({key, item}) => {
       </div>
     </div>
   );
-};
+}
 
 export default card;

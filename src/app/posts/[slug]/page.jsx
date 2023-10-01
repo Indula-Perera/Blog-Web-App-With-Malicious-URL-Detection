@@ -3,42 +3,57 @@ import styles from './singlePage.module.css'
 import Image from 'next/image'
 import Comments from '@/components/comments/Comments'
 
-const SinglePage = () => {
+const getData = async (slug) =>{
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`,
+  {
+    cache: "no-store",
+  });
+
+  if(!res.ok){
+    throw new Error("Failed");
+  }
+  return res.json();
+
+};
+
+const SinglePage = async({params}) => {
+  const {slug} = params;
+
+  const data = await getData (slug)
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>Barracuda Email Security Gateway Attack Timeline.</h1>
+          <h1 className={styles.title}>
+           {data?.title}
+            </h1>
           <div className={styles.user}>
-            <div className={styles.userImageContainer}>
-            <Image src="/mail.jpg" alt='' fill className={styles.avatar}/>  
-            </div>
+            {data?.user?.image && <div className={styles.userImageContainer}>
+            <Image src={data.user.image} alt='' fill className={styles.avatar}/>  
+            </div>}
             <div className={styles.userTextContainer}>
-              <span className={styles.username}>John Doe</span>
+              <span className={styles.username}>{data?.user.name}</span>
               <span className={styles.date}>15.09.2023</span>
             </div>
           </div>
         </div>
-        <div className={styles.imageContainer}>
-          <Image src="/mail.jpg" alt='' fill className={styles.image}/>
+       {data?.img && ( <div className={styles.imageContainer}>
+          <Image src={data.img} alt='' fill className={styles.image}/>
           
-        </div>
+        </div>)}
       </div>
       <div className={styles.content}>
       <div className={styles.post}>
 
-        <div className={styles.description}>
-
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit vero aspernatur minus in, quos ad temporibus ullam eos dolor sint fugit quo praesentium modi illo reiciendis totam veniam nisi est?</p>
-
-          <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h2>
-          
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit vero aspernatur minus in, quos ad temporibus ullam eos dolor sint fugit quo praesentium modi illo reiciendis totam veniam nisi est?</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit vero aspernatur minus in, quos ad temporibus ullam eos dolor sint fugit quo praesentium modi illo reiciendis totam veniam nisi est?</p>
-       
-        </div>
+      
+      {typeof data?.desc === 'string' &&
+          <div
+            className={styles.description}
+            dangerouslySetInnerHTML={{__html: data.desc }}
+          />}
+        
         <div className={styles.comment}>
-          <Comments/>
+          <Comments slug={slug}/>
         </div>
       </div>
       <Menu/>

@@ -7,10 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 
 const AulthLink = () => {
 
-
   const [open,setOpen] = useState(false)
-
-
 
   const {status} = useSession(); 
 
