@@ -22,6 +22,8 @@ const WritePage = () => {
   const [media, setMedia] = useState("")
   const [value, setValue] = useState("")
   const [title, setTitle] = useState("")
+  const [catSlug, setCatSlug] = useState("");
+ 
 
   useEffect(()=>{
     const upload = () =>{
@@ -71,11 +73,11 @@ const WritePage = () => {
 
   const slugify = (str) =>
   str
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g,"")
-    .replace(/[\s-]+/g,"")
-    .replace(/^-+|-+$/g,"");
+  .toLowerCase()
+  .trim()
+  .replace(/[^\w\s-]/g, "")
+  .replace(/[\s_-]+/g, "-")
+  .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async ()=>{
     const res = await fetch("/api/posts",{
@@ -85,7 +87,7 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug:"Code"
+        catSlug: catSlug || "Not Select ",
       }),
       
       });
@@ -99,6 +101,14 @@ const WritePage = () => {
       <input type='text' placeholder='Title' className={styles.input} 
       onChange={e=>setTitle(e.target.value)}
       />
+        <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
+        <option value="Cyber">Cyber Threads</option>
+        <option value="Ai">Ai</option>
+        <option value="Chat">Chat GPT</option>
+        <option value="Dark">Dark Web</option>
+        <option value="Code">Code</option>
+        <option value="Virus">Virus</option>
+      </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt='' width={16} height={16} />
@@ -126,7 +136,9 @@ const WritePage = () => {
           </div>
         )}
 
-        <ReactQuill className={styles.textArea} theme='bubble' value={value} onChange={setValue} placeholder='Tell Your Story...' />
+        <ReactQuill className={styles.textArea} 
+        theme='bubble' value={value} 
+        onChange={setValue} placeholder='Tell Your Story...' />
       </div>
 
       <button className={styles.publish} onClick={handleSubmit}>Publish</button>
