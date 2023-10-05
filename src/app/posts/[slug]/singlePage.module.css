@@ -70,6 +70,19 @@
     margin-bottom: 20px;
 }
 
+.deleteButton {
+   
+    display: flex;
+    margin-left: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1);
+  }
+  .deleteButton:hover{
+    color: #d32f2f;
+    transform: scale(1.2);
+  }
+
 @media screen and (max-width:1536px) {
     .title{
         font-size: 54px;

@@ -111,7 +111,7 @@ const Comments = ({ postSlug }) => {
 
 
 
-                <p className={styles.desc}>{item.desc}.</p>
+                <p className={styles.desc}>{item.desc}</p>
                 
                 {session && item.userEmail === session.user.email && (
                   <Image
