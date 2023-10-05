@@ -33,7 +33,7 @@
      gap: 5px;
    }
    
-   .category{
+   .categoryItem{
      padding: 3px 8px;
      border-radius: 30px;
      font-size: 12px;
@@ -58,6 +58,26 @@
    background-color: #95da97e8 ;
    
    }
+
+
+   .categoryItem.Cyber{
+    background-color: #48b6f131;
+}
+.categoryItem.Ai{
+    background-color: #da7ec631;
+}
+.categoryItem.Chat{
+    background-color: #7cb97e33;
+}
+.categoryItem.Dark{
+    background-color: #594aff31;
+}
+.categoryItem.Code{
+    background-color: #faae5245;
+}
+.categoryItem.Virus{
+    background-color: #ee66443b;
+}
    
    
    .postTitle{

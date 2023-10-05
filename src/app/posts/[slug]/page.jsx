@@ -3,6 +3,7 @@ import styles from './singlePage.module.css'
 import Image from 'next/image'
 import Comments from '@/components/comments/Comments'
 
+
 const getData = async (slug) =>{
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/posts/${slug}`,
   {
@@ -62,10 +63,11 @@ const SinglePage = async({params,}) => {
       <div className={styles.post}>
 
       
+      {typeof data?.desc === 'string' &&
           <div
             className={styles.description}
-            dangerouslySetInnerHTML={{__html: data?.desc }}
-          />
+            dangerouslySetInnerHTML={{__html: data.desc }}
+          />}
         
         <div className={styles.comment}>
           <Comments postSlug={slug}/>
