@@ -11,6 +11,7 @@ export const GET = async () => {
       views: "desc",
     },
     include: { user: true },
+    
   };
   try {
     const menuposts = await prisma.post.findMany(query);
