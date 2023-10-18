@@ -6,7 +6,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
-  const { data, status } = useSession();
+  const { status } = useSession();
 
   const router = useRouter();
 
@@ -14,7 +14,7 @@ const LoginPage = () => {
     return <div className={styles.loading}>Loading...</div>;
   }
   
-  if (status === "unauthenticated") {
+  if (status === "authenticated") {
     router.push("/");
   }
 
@@ -32,7 +32,7 @@ const LoginPage = () => {
           />{" "}
           Sign in with Google{" "}
         </div>
-        <div className={styles.socialButton}>
+        <div className={styles.socialButton} onClick={() => signIn("github")}>
           {" "}
           <Image
             src="/github.png"
