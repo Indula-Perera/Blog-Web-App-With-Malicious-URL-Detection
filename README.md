@@ -1,6 +1,6 @@
 # Blog-Web-App-With-Malicious-URL-Detection
 
-Getting Started
+#Getting Started
 First, run the development server:
 
 Set up prisma and make sure you have your mongoDB set up to configure prisma follow these commands
