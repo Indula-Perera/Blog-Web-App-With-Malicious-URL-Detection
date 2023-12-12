@@ -1,8 +1,8 @@
-Certainly! Here's a revised README for your Blog Web App with Malicious URL Detection project:
+Certainly! Here's a revised README for your Blog Web App project:
 
 ---
 
-# Blog Web App with Malicious URL Detection
+# Blog Web App 
 
 Welcome to the Blog Web App with Malicious URL Detection project. This web application is built using Next.js and Prisma, and it includes a feature for detecting potentially malicious URLs.
 
