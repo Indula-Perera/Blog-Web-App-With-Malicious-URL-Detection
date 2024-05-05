@@ -79,21 +79,49 @@ const WritePage = () => {
   .replace(/[\s_-]+/g, "-")
   .replace(/^-+|-+$/g, "");
 
-  const handleSubmit = async ()=>{
-    const res = await fetch("/api/posts",{
-        method: "POST", 
-        body : JSON.stringify({
-        title, 
-        desc: value,
-        img: media,
-        slug: slugify(title),
-        catSlug: catSlug || "Not Select ",
-      }),
+  // const handleSubmit = async ()=>{
+  //   const res = await fetch("/api/posts",{
+  //       method: "POST", 
+  //       body : JSON.stringify({
+  //       title, 
+  //       desc: value,
+  //       img: media,
+  //       slug: slugify(title),
+  //       catSlug: catSlug || "Cyber",
+  //     }),
       
-      });
+  //     });
     
-      console.log(res)
-  }
+  //     console.log(res)
+  // }
+
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        body: JSON.stringify({
+          title,
+          desc: value,
+          img: media,
+          slug: slugify(title),
+          catSlug: catSlug || "Cyber",
+        }),
+      });
+  
+      if (res.status === 200) {
+        // If the response status is 200 (OK), show a success alert
+        alert("Post created successfully.");
+        // Reload the page
+        window.location.reload();
+      } else {
+        // Handle other response statuses as needed
+        alert("Failed to create post. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  
 
 
   return (
@@ -141,7 +169,7 @@ const WritePage = () => {
         onChange={setValue} placeholder='Tell Your Story...' />
       </div>
 
-      <button className={styles.publish} onClick={handleSubmit}>Publish</button>
+      <button className={styles.publish} onClick={handleSubmit} >Publish</button>
     </div>
   )
 }

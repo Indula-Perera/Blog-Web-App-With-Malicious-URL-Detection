@@ -1,30 +1,54 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import styles from "./featured.module.css";
 import Image from "next/image";
+import Link from "next/link";
 const Featured = () => {
+  const [featuredData, setFeaturedData] = useState(null);
+
+  useEffect(() => {
+    // Fetch data from your API endpoint
+    fetch("/api/featuredpost")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Set the fetched data in the state
+        setFeaturedData(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
          <b >Hey! This Is Cyber Blog </b> Discover New Cyber Things And News. 
       </h1>
 
-      <div className={styles.post}>
+     {featuredData &&( <div className={styles.post}>
           <div className={styles.imgContainer}>
-            <Image src="/mail.jpg" alt="" fill className={styles.image}/>
+           <a href={`/posts/${featuredData.slug}`}> <Image src={featuredData.img} alt="" fill className={styles.image}/>
+           </a>
           </div>
 
           <div className={styles.textContainer}>
-            <h1 className={styles.postTitle}>  Barracuda Email Security Gateway Attack Timeline</h1>
-            <p className={styles.postDesc}>
-            When a product, that has the word &lsquo;Security&apos; in its name, becomes the target of a zero-day attack which ends up compromising several other businesses, it is certainly an event to be studied and learn from. Hence, we created this timeline that covers everything that happened in the Barracuda Email Security Gateway Appliances Attack.  
-
-            We have created this educational timeline that covers the cyber incident as it unfolded in a chronological order. In this timeline, we’ve categorised the data as: The Incident, the Impact it had on the business and its many customers, and the actions taken by Barracuda and the government. 
-            </p>
+           <a href={`/posts/${featuredData.slug}`}> <h1 className={styles.postTitle}>  {featuredData.title}</h1></a>
+            <div className={styles.postDesc} dangerouslySetInnerHTML={{
+                __html: featuredData?.desc?.substring(0, 550),
+              }}/>
+            <Link href={`/posts/${featuredData.slug}`}>
             <button className={styles.button}>Read More</button>
+            </Link>
           </div>
 
 
-      </div>
+      </div>)}
     </div>
   );
 };

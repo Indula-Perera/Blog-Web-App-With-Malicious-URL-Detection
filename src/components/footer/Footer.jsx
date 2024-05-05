@@ -34,10 +34,10 @@ const Footer = () => {
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
-          <Link href="/">Cyber Threat</Link>
-          <Link href="/">Chat GPT</Link>
-          <Link href="/">Dark Web</Link>
-          <Link href="/">Coding</Link>
+          <Link href={`/blog?cat=Cyber`}>Cyber Threat</Link>
+          <Link href={`/blog?cat=Chat`}>Chat GPT</Link>
+          <Link href={`/blog?cat=Dark`}>Dark Web</Link>
+          <Link href={`/blog?cat=Code`}>Coding</Link>
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Social</span>

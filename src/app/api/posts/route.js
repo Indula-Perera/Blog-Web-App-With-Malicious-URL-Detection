@@ -8,7 +8,7 @@ export const GET = async (req) => {
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
 
-  const POST_PER_PAGE = 2;
+  const POST_PER_PAGE = 3;
 
   const query = {
     take: POST_PER_PAGE,
@@ -20,17 +20,23 @@ export const GET = async (req) => {
 
   
   try {
-    const [posts, count] = await prisma.$transaction([
-      prisma.post.findMany(query),
-      prisma.post.count({ where: query.where }),
-    ]);
-    return new NextResponse(JSON.stringify({ posts, count }, { status: 200 }));
-  } catch (err) {
-    console.log(err);
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
-    );
-  }
+      // Execute the findMany query
+      const posts = await prisma.post.findMany(query);
+
+      // Reverse the array
+      const reversedPosts = posts.reverse();
+      // Count query remains the same
+      const count = await prisma.post.count({ where: query.where });
+  
+      return new NextResponse(
+        JSON.stringify({ posts: reversedPosts, count }, { status: 200 })
+      );
+    } catch (err) {
+      console.error(err.message);
+      return new NextResponse(
+        JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+      );
+    }
 };
 
 

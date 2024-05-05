@@ -1,9 +1,9 @@
 "use client";
-
 import Link from "next/link";
 import Styles from "./AulthLink.module.css"
 import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
+
 
 const AulthLink = () => {
 
@@ -36,8 +36,8 @@ const AulthLink = () => {
         <Link href="/"> Contact </Link>
         <Link href="/"> About </Link>
 
-        {status === "notauthenticated" ? (
-    <Link href="/login">Login</Link>
+        {status === "unauthenticated" ? (
+           <Link href="/login" >Login</Link>
    ): (
     <>
     <Link href="/write">Write</Link>

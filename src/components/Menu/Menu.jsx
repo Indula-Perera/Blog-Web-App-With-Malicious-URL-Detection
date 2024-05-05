@@ -9,7 +9,7 @@ const Menu = () => {
     <div className={styles.container}>
       <h2 className={styles.subtitle}>{"What's hot "}</h2>
       <h1 className={styles.title}> Most Popular</h1>
-      <MenuPosts withImage={false}/>
+      <MenuPosts withImage={false} withViews={true}/>
 
       {/* Part ii */}
 
@@ -21,7 +21,7 @@ const Menu = () => {
 
       <h2 className={styles.subtitle}>Chosen by the editor</h2>
       <h1 className={styles.title}> Editors Pick</h1>
-       <MenuPosts withImage={true}/>
+       <MenuPosts withImage={true} withViews={false} />
     </div>
   );
 };
